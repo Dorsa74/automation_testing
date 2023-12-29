@@ -1,9 +1,6 @@
 import random
 
-# generate a random number
-number_range = range(0, 101)
-target_number = random.randint(1, 100)
-score = 20;
+
 
 def get_number():
     # Getting the number
@@ -30,10 +27,15 @@ def check_number(guessed_number, target_number, score):
         return 0
 
 
-if name == main:
+if __name__ == '__main__':
+    score = 100;
+
+    # generate a random number
+    target_number = random.randint(1, 100)
+
     guess = get_number()
 
-while not check_number(guess, target, score):
-   score = score - 1
-   print(f"your score is {score}")
-   guess = get_number()
+    while not check_number(guess, target_number, score):
+      score = score - 5
+      print(f"your score is {score}")
+      guess = get_number()
