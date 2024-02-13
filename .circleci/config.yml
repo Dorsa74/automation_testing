@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Commit and Push Changes
           command: |
-            git add commit2.txt
+            git add .
             git commit -m "Add commit file"
             git push origin main  
             
