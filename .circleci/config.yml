@@ -3,6 +3,8 @@ jobs:
   build:
     docker:
       - image: cimg/python:3.10.1
+
+      
     steps:
       - checkout
       - restore_cache:
@@ -14,16 +16,30 @@ jobs:
             git config --global user.email "kabiridorsa@gmail.com"
             git config --global user.name "Dorsa74"
 
+
+      - run:
+          name: Extract File Name
+          command: |
+            # Read the content of the text file
+            file_content=$(name.txt)
+
+            # Extract the file name using grep (replace with appropriate pattern)
+            file_name=$(echo "$file_content" | grep -oP 'Application name: \K.*')
+
+            # Store the file name in an environment variable
+            echo "Extracted File Name: $file_name"
+            echo "export EXTRACTED_FILE_NAME=$file_name" >> $BASH_ENV
+
   
       - run:
           name: Check if file exists
           command: |
-            if [ -f "commit3.txt" ]; then
-              echo "File 'commit3.txt' already exists."
+            if [ -f $EXTRACTED_FILE_NAME ]; then
+              echo "File $EXTRACTED_FILE_NAME already exists."
             else
-              echo "File 'commit3.txt' does not exist, skipping file creation and configuration"
-              echo "This commit was created automatically." > commit3.txt
-              git add commit3.txt
+              echo "File $EXTRACTED_FILE_NAME does not exist, skipping file creation and configuration"
+              echo "This commit was created automatically." > $EXTRACTED_FILE_NAME
+              git add $EXTRACTED_FILE_NAME
               git commit -m "Add commit file"
               git push origin main  # Adjust branch name as needed
             fi
