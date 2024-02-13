@@ -8,6 +8,22 @@ jobs:
       - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
+          name: Create File
+          command: echo "This commit was created automatically." > commit.txt
+      - run:
+          name: Configure Git
+          command: |
+            git config --global user.email "kabiridorsa@gmail.com"
+            git config --global user.name "Dorsa74"
+
+      - run:
+          name: Commit and Push Changes
+          command: |
+            git add commit.txt
+            git commit -m "Add commit file"
+            git push origin main  
+            
+      - run:
           command: |
             python3 -m venv venv
             . venv/bin/activate
