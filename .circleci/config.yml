@@ -12,8 +12,8 @@ jobs:
       - run:
           name: Check if file exists
           command: |
-            if [ -f "commit.txt" ]; then
-              echo "File 'commit.txt' already exists."
+            if [ -f "commit2.txt" ]; then
+              echo "File 'commit2.txt' already exists."
               exit 0  # Exit successfully to skip further steps
             fi
       
