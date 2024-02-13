@@ -26,6 +26,7 @@ jobs:
               git add commit2.txt
               git commit -m "Add commit file"
               git push origin main  # Adjust branch name as needed
+            fi
             
       - run:
           command: |
