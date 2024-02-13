@@ -18,12 +18,12 @@ jobs:
       - run:
           name: Check if file exists
           command: |
-            if [ -f "commit2.txt" ]; then
-              echo "File 'commit2.txt' already exists."
+            if [ -f "commit3.txt" ]; then
+              echo "File 'commit3.txt' already exists."
             else
-              echo "File 'commit2.txt' does not exist, skipping file creation and configuration"
-              echo "This commit was created automatically." > commit.txt
-              git add commit2.txt
+              echo "File 'commit3.txt' does not exist, skipping file creation and configuration"
+              echo "This commit was created automatically." > commit3.txt
+              git add commit3.txt
               git commit -m "Add commit file"
               git push origin main  # Adjust branch name as needed
             fi
