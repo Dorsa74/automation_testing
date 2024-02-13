@@ -9,7 +9,7 @@ jobs:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
           name: Create File
-          command: echo "This commit was created automatically again." > again.txt
+          command: echo "This commit was created automatically again." > commit2.txt
       - run:
           name: Configure Git
           command: |
@@ -19,7 +19,7 @@ jobs:
       - run:
           name: Commit and Push Changes
           command: |
-            git add commit.txt
+            git add commit2.txt
             git commit -m "Add commit file"
             git push origin main  
             
