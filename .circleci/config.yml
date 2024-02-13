@@ -21,6 +21,7 @@ jobs:
           name: Extract File Name
           command: |
             # Read the content of the text file
+            ls
             file_content=$(cat /name.txt)
 
             # Extract the file name using grep (replace with appropriate pattern)
