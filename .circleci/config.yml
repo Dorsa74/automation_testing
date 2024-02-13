@@ -21,7 +21,7 @@ jobs:
           command: |
             . venv/bin/activate
             python3 tests.py
-      - check:
+      - run:
           name: List Contents of Directory
           command: ls -l /home/circleci/project/
       - store_artifacts:
