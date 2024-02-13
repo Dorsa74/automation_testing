@@ -21,7 +21,7 @@ jobs:
           name: Extract File Name
           command: |
             # Read the content of the text file
-            file_content=$(cat name.txt)
+            file_content=$(cat /name.txt)
 
             # Extract the file name using grep (replace with appropriate pattern)
             file_name=$(echo "$file_content" | grep -oP 'Application name: \K.*')
