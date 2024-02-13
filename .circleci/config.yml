@@ -7,6 +7,16 @@ jobs:
       - checkout
       - restore_cache:
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
+
+
+      - run:
+          name: Check if file exists
+          command: |
+            if [ -f "commit.txt" ]; then
+              echo "File 'commit.txt' already exists."
+              exit 0  # Exit successfully to skip further steps
+            fi
+      
       - run:
           name: Create File
           command: echo "This commit was created automatically again." > commit2.txt
@@ -19,7 +29,7 @@ jobs:
       - run:
           name: Commit and Push Changes
           command: |
-            git add .
+            git add commit2.txt
             git commit -m "Add commit file"
             git push origin main  
             
